@@ -111,6 +111,16 @@ const Sidebar = () => {
                             <span>Pages</span>
                           </Link>
                         </li>
+                        <li
+                          className={
+                            location.pathname === "/menus" ? "mm-active" : ""
+                          }
+                        >
+                          <Link to="/menus">
+                            <i className="uil-home-alt" />
+                            <span>Menus</span>
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                     {/* Sidebar */}

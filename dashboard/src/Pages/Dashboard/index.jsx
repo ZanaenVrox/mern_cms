@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import Breadcrumb from "../../Reuseable/Breadcrumb";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div className="main-content">
+      <div className="page-content">
+        <div className="container-fluid">
+          <div className="row"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

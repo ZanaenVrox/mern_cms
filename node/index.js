@@ -7,6 +7,10 @@ const multer = require("multer");
 const helmet = require("helmet");
 
 const adminRoutes = require("./routes/adminRoutes");
+const menuRoutes = require("./routes/menuRoutes");
+
+const postCategoryRoutes = require("./routes/postCategoryRoutes");
+const postsRoutes = require("./routes/postsRoutes");
 
 connectDB();
 const app = express();
@@ -35,6 +39,12 @@ app.use("/api/images", express.static("images"));
 app.post("/api/upload", upload.single("file"), function (req, res, next) {
   return res.status(200).send("Image uploaded Succesfully");
 });
+app.post("/api/upload/image", upload.single("upload"), (req, res) => {
+  const link = `http://localhost:5000/api/images/${req.file.filename}`;
+  res.status(200).send({
+    url: link,
+  });
+});
 app.post("/api/upload/multiple", upload.array("images", 5), (req, res) => {
   const files = req.files;
   const filePaths = files.map((file) => file.path);
@@ -48,6 +58,11 @@ app.post("/api/upload/multiple", upload.array("images", 5), (req, res) => {
 });
 
 app.use("/api/admin/", adminRoutes);
+
+app.use("/api/menus/", menuRoutes);
+
+app.use("/api/posts/category/", postCategoryRoutes);
+app.use("/api/posts/", postsRoutes);
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const postsSchema = new mongoose.Schema(
+const postcategorySchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -22,11 +22,7 @@ const postsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    category: {
-      type: Array,
-      required: true,
-    },
-    author: {
+    colourCode: {
       type: String,
       required: false,
     },
@@ -36,6 +32,8 @@ const postsSchema = new mongoose.Schema(
   }
 );
 
-const Posts = mongoose.models.Posts || mongoose.model("Posts", postsSchema);
+const PostCategory =
+  mongoose.models.PostCategory ||
+  mongoose.model("PostCategory", postcategorySchema);
 
-module.exports = Posts;
+module.exports = PostCategory;
